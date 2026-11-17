@@ -794,7 +794,7 @@ html.lowfx.oc .zt,html.lowfx.oc .name,html.lowfx.oc .lv-name{animation:none}
    EDIT YOUR CONTENT HERE. Everything on the page is generated from this
    CONFIG object: text, links, skills, projects, awards and photos.
    Photos: drop files into an /images folder next to index.html and keep
-   the names below (photo1.jpg, photo2.jpg, photo3.jpg), or change them.
+   the names below (photo1.jpeg, photo2.jpeg, photo3.jpeg), or change them.
    ===================================================================== */
 const CONFIG = {
   fullName: 'Siddhant Pramanik',
@@ -817,9 +817,9 @@ const CONFIG = {
   // Self-rated radar chart, values from 0 to 1. Change them to whatever feels true.
   radar: [['Full-stack', 0.92], ['AI & vision', 0.84], ['UI & motion', 0.9], ['Leadership', 0.88], ['Competitive', 0.95]],
   photos: [
-    { src: 'images/photo1.jpg', caption: 'Player 01' },
-    { src: 'images/photo2.jpg', caption: 'Yukti 2K26' },
-    { src: 'images/photo3.jpg', caption: 'Nexus Builders' }
+    { src: 'images/photo1.jpeg', caption: 'Player 01', focus: '50% 38%' },
+    { src: 'images/photo2.jpeg', caption: 'Yukti 2K26', focus: '50% 22%' },
+    { src: 'images/photo3.jpeg', caption: 'Nexus Builders', focus: '50% 52%' }
   ],
   skills: [
     { name: 'Front-end', wide: true, items: ['HTML', 'CSS', 'JavaScript', 'React.js', 'Vite', 'Three.js', 'Responsive Web Development'] },
@@ -1045,7 +1045,7 @@ function renderStatic() {
 
   /* polaroids */
   $('#stack').innerHTML = C.photos.map((p, i) => `<figure class="pol empty" data-i="${i}">
-    <div class="ph"><img src="${esc(PH[i] || p.src)}" alt="${esc(p.caption)}" draggable="false">
+    <div class="ph"><img src="${esc(PH[i] || p.src)}" alt="${esc(p.caption)}" draggable="false" style="object-position:${esc(p.focus || '50% 40%')}">
       <div class="ph-empty"><svg><use href="#i-camera"/></svg><b>Photo ${i + 1}</b><small>or drop an image here</small></div>
       <label class="pick" data-cursor="ADD"><svg><use href="#i-camera"/></svg><span class="pick-t">Choose photo</span><input type="file" accept="image/*" aria-label="Choose photo ${i + 1} from your device"></label></div>
     <figcaption><span>${esc(p.caption)}</span><i>${pad(i + 1)}</i></figcaption></figure>`).join('');
